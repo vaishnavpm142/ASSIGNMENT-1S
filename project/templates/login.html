@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Sign-Up</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #007bff; /* Blue button */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        .btn-danger {
+            background-color: #dc3545; /* Red button */
+            border: none;
+        }
+        .btn-danger:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+        .errmsg {
+            background-color: #ffc107; /* Yellow alert */
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-center">Login / Sign-Up</h3>
+                    <form action="loginaction" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            {{form.username}}
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            {{form.password}}
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Sign-In</button>
+                        <p class="text-center mt-3">New User? <a href="signup" class="btn btn-danger">Sign-Up</a></p>
+                        {% if errmsg %}
+                        <div class="errmsg text-center">{{errmsg}}</div>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
